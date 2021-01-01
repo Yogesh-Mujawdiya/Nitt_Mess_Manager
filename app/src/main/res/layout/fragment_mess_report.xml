@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".ui.MessReportFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="50dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/picker_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="2"
+            android:padding="25dp"
+            android:text="12"
+            android:textSize="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <EditText
+            android:id="@+id/picker_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="4"
+            android:padding="25dp"
+            android:textSize="25dp"
+            android:text="2020"
+            android:inputType="number"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/GenerateReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generate Report"
+        android:layout_margin="25dp"
+        android:background="@drawable/capsule"/>
+</LinearLayout>

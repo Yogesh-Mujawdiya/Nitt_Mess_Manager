@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_rating"
+            android:icon="@drawable/ic_baseline_star_rate_24"
+            android:title="@string/menu_rating" />
+        <item
+            android:id="@+id/nav_mess_menu"
+            android:icon="@drawable/ic_menu"
+            android:title="@string/menu_menu" />
+        <item
+            android:id="@+id/nav_report"
+            android:icon="@drawable/ic_reorder"
+            android:title="@string/menu_report" />
+        <item
+            android:id="@+id/nav_on_leave"
+            android:icon="@drawable/ic_leave"
+            android:title="@string/menu_on_leave" />
+    </group>
+</menu>

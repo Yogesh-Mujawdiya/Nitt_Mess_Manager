@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.my.nitt_mess_manager.ui.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_report"
+        android:name="com.my.nitt_mess_manager.ui.MessReportFragment"
+        android:label="@string/menu_report"
+        tools:layout="@layout/fragment_mess_report" />
+
+
+    <fragment
+        android:id="@+id/nav_mess_menu"
+        android:name="com.my.nitt_mess_manager.ui.MessMyMenuFragment"
+        android:label="@string/menu_menu"
+        tools:layout="@layout/fragment_mess_my_menu" />
+
+    <fragment
+        android:id="@+id/nav_rating"
+        android:name="com.my.nitt_mess_manager.ui.MyMessRatingFragment"
+        android:label="@string/menu_rating"
+        tools:layout="@layout/fragment_my_mess_rating" />
+    <fragment
+        android:id="@+id/nav_on_leave"
+        android:name="com.my.nitt_mess_manager.ui.StudentOnLeaveFragment"
+        android:label="@string/menu_on_leave"
+        tools:layout="@layout/fragment_student_on_leave" />
+
+</navigation>

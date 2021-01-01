@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EditMessMenuActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/week_name"
+        android:padding="10dp"
+        android:textSize="25sp"
+        android:textColor="#000"
+        android:gravity="center"/>
+
+
+    <EditText
+        android:id="@+id/Breakfast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="3"
+        android:layout_margin="25dp"
+        android:hint="@string/breakfast"
+        android:autofillHints="@string/breakfast"
+        android:inputType="text" />
+
+
+    <EditText
+        android:id="@+id/Lunch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="3"
+        android:layout_margin="25dp"
+        android:hint="@string/lunch"
+        android:autofillHints="@string/lunch"
+        android:inputType="text" />
+
+
+    <EditText
+        android:id="@+id/Snack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="3"
+        android:layout_margin="25dp"
+        android:hint="@string/snack"
+        android:autofillHints="@string/snack"
+        android:inputType="text" />
+
+
+    <EditText
+        android:id="@+id/Dinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="3"
+        android:layout_margin="25dp"
+        android:hint="@string/dinner"
+        android:autofillHints="@string/dinner"
+        android:inputType="text" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/capsule"
+        android:text="@string/update"
+        android:textSize="25sp"
+        android:textColor="#FFF"
+        android:layout_margin="25dp"/>
+
+</LinearLayout>
