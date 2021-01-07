@@ -17,6 +17,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
@@ -26,6 +28,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -202,16 +206,12 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                     if(dataSnapshot.exists()  && dataSnapshot.hasChild(FoodType))
-                        textView.setText("Complete his "+s[1]+" at Time"+ dataSnapshot.getValue().toString());
+                        textView.setText("Complete his "+s[1]+" at Time"+ dataSnapshot.child("time").getValue().toString());
                     else {
                         final Dialog dialog = new Dialog(getActivity());
                         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                         dialog.setCancelable(true);
                         dialog.setContentView(R.layout.guest_info_dilog);
-
-                        final String UserId = dataSnapshot.getKey();
-                        final String MessId = s[0];
-                        final String FoodType = s[1];
                         Calendar calendar = Calendar.getInstance();
                         final int Hours = calendar.get(Calendar.HOUR_OF_DAY);
                         final int Minutes = calendar.get(Calendar.MINUTE);
@@ -226,10 +226,28 @@ public class HomeFragment extends Fragment {
                         final Button btnSubmit = dialog.findViewById(R.id.SubmitButton);
                         textViewId.setText(dataSnapshot.getKey());
                         textViewName.setText(dataSnapshot.child("Name").getValue(String.class));
-                        textViewGeneratedBy.setText(dataSnapshot.child("GeneratedBy").getValue(String.class));
+                        textViewGeneratedBy.setText(dataSnapshot.child("GenerateBy").getValue(String.class));
                         btnSubmit.setOnClickListener(view -> {
                             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Data/GuestQR").child(s[0]).child(Key).child(s[1]);
                             databaseReference.child(FoodType).setValue(Hours+":"+Minutes);
+                            String key = Year+"/"+Month+"/"+Day;
+                            FirebaseDatabase.getInstance().getReference("Data/Guest").child(MessId).child(key).child(dataSnapshot.child("GenerateBy").getValue(String.class)).child(FoodType)
+                                    .runTransaction(new Transaction.Handler() {
+                                        @NonNull
+                                        @Override
+                                        public Transaction.Result doTransaction(@NonNull MutableData currentData) {
+                                            if(currentData.getValue(Integer.class)!=null)
+                                                currentData.setValue(currentData.getValue(Integer.class)+1);
+                                            else
+                                                currentData.setValue(1);
+                                            return Transaction.success(currentData);
+                                        }
+
+                                        @Override
+                                        public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {
+
+                                        }
+                                    });
                             dialog.dismiss();
                         });
                         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
